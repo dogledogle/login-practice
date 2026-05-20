@@ -1,0 +1,22 @@
+{
+  "name": "login-practice",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,green \"npm run dev -w @login-practice/api\" \"npm run dev -w @login-practice/web\"",
+    "build": "npm run build -w @login-practice/shared && npm run build -w @login-practice/api && npm run build -w @login-practice/web",
+    "test": "npm run test -w @login-practice/api",
+    "db:generate": "npm run db:generate -w @login-practice/api",
+    "db:push": "npm run db:push -w @login-practice/api",
+    "db:studio": "npm run db:studio -w @login-practice/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.3"
+  }
+}
